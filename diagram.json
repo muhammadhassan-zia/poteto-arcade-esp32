@@ -1,0 +1,145 @@
+{
+  "version": 1,
+  "author": "Hassan Zia",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-devkit-c-v4",
+      "id": "esp",
+      "top": -97.14,
+      "left": 160.1,
+      "rotate": 270,
+      "attrs": {}
+    },
+    { "type": "wokwi-led", "id": "led1", "top": 15.6, "left": 407, "attrs": { "color": "red" } },
+    { "type": "wokwi-led", "id": "led2", "top": 44.4, "left": 32.6, "attrs": { "color": "blue" } },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 71.15,
+      "left": 374.4,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 118.6,
+      "left": 27.95,
+      "rotate": 270,
+      "attrs": { "value": "1000" }
+    },
+    {
+      "type": "wokwi-pushbutton-6mm",
+      "id": "btn1",
+      "top": 161,
+      "left": 28.8,
+      "attrs": { "color": "green", "xray": "1" }
+    },
+    {
+      "type": "wokwi-pushbutton-6mm",
+      "id": "btn2",
+      "top": 161,
+      "left": 105.6,
+      "attrs": { "color": "green", "xray": "1" }
+    },
+    {
+      "type": "wokwi-pushbutton-6mm",
+      "id": "btn3",
+      "top": 161,
+      "left": 326.4,
+      "attrs": { "color": "green", "xray": "1" }
+    },
+    {
+      "type": "wokwi-pushbutton-6mm",
+      "id": "btn4",
+      "top": 161,
+      "left": 403.2,
+      "rotate": 90,
+      "attrs": { "color": "green", "xray": "1" }
+    },
+    {
+      "type": "wokwi-pushbutton-6mm",
+      "id": "btn5",
+      "top": 189.8,
+      "left": 364.8,
+      "attrs": { "color": "green", "xray": "1" }
+    },
+    {
+      "type": "wokwi-pushbutton-6mm",
+      "id": "btn6",
+      "top": 132.2,
+      "left": 364.8,
+      "attrs": { "color": "green", "xray": "1", "bounce": "1" }
+    },
+    {
+      "type": "board-ssd1306",
+      "id": "oled1",
+      "top": 127.94,
+      "left": 173.03,
+      "attrs": { "i2cAddress": "0x3c" }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": -38.4,
+      "left": 0,
+      "rotate": 180,
+      "attrs": { "volume": "0.1" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "oled1:GND", "esp:GND.1", "black", [ "v-9.6", "h48", "v-9.6" ] ],
+    [ "esp:3V3", "oled1:VCC", "gold", [ "v57.45", "h86.4" ] ],
+    [ "oled1:SCL", "esp:22", "purple", [ "v-19.2", "h105.9", "v-163.2", "h-9.6" ] ],
+    [ "esp:21", "oled1:SDA", "magenta", [ "v-19.2", "h144", "v163.2", "h-86.4" ] ],
+    [ "btn3:2.r", "btn5:1.l", "black", [ "h0.8", "v10" ] ],
+    [ "btn6:2.l", "esp:GND.1", "black", [ "h-76.8", "v-28.4", "h-28.8" ] ],
+    [ "btn1:2.r", "btn2:2.l", "black", [ "h0" ] ],
+    [ "btn2:2.r", "esp:GND.1", "black", [ "h29.6", "v-57.2", "h96" ] ],
+    [ "bz1:1", "esp:GND.2", "black", [ "v-12", "h-1.8" ] ],
+    [ "btn6:1.l", "esp:13", "white", [ "h-67.2", "v-38.4", "h-28.8" ] ],
+    [ "btn5:2.l", "esp:14", "white", [ "h-57.6", "v-114.8", "h0", "v-9.6", "h-67.2" ] ],
+    [ "btn3:1.r", "esp:23", "white", [ "v-230.4", "h-210.4" ] ],
+    [ "btn4:2.r", "btn5:1.r", "black", [ "v0" ] ],
+    [ "btn6:2.r", "btn4:2.l", "black", [ "h0" ] ],
+    [ "btn4:1.l", "esp:19", "white", [ "v-35.2", "h-82.4", "v-201.6", "h-144" ] ],
+    [
+      "btn1:1.r",
+      "esp:18",
+      "white",
+      [ "v0", "h29.6", "v-220.8", "h48", "v-19.2", "h57.6", "v-9.6", "h19.2" ]
+    ],
+    [
+      "esp:4",
+      "btn2:1.l",
+      "white",
+      [ "v-48", "h-28.8", "v-9.6", "h-38.4", "v9.6", "h-57.6", "v19.2", "h-28.8", "v230.4" ]
+    ],
+    [ "bz1:2", "esp:25", "green", [ "v0", "h38.8", "v115.2", "h134.4" ] ],
+    [ "led2:A", "r2:2", "blue", [ "v0" ] ],
+    [ "r2:1", "esp:26", "blue", [ "h96", "v-48", "h67.2" ] ],
+    [ "led2:C", "btn1:2.l", "black", [ "v67.2", "h-28.4", "v28.8" ] ],
+    [ "led1:A", "r1:2", "red", [ "v0" ] ],
+    [ "r1:1", "esp:27", "red", [ "v0", "h-144" ] ],
+    [
+      "led1:C",
+      "esp:GND.3",
+      "black",
+      [
+        "v0",
+        "h-57.2",
+        "v-134.4",
+        "h-9.6",
+        "v-9.6",
+        "h-96",
+        "v-9.6",
+        "h-28.8",
+        "v-9.6",
+        "h-38.4"
+      ]
+    ]
+  ],
+  "dependencies": {}
+}
